@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "glsa-oval"
+version = "2026.04.06"
+authors = [
+  { name="necrose99", email="your-email@example.com" },
+]
+description = "Gentoo GLSA to OVAL generator with NVD CVSS enrichment for SecOps"
+readme = "README.md"
+requires-python = ">=3.9"
+keywords = ["gentoo", "glsa", "oval", "scap", "security", "nvd", "vulnerability"]
+license = { text = "GPL-3.0-only" }
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Information Technology",
+    "Topic :: Security",
+    "Programming Language :: Python :: 3",
+]
+
+# Core dependencies for the enrichment pipeline
+dependencies = [
+    "requests>=2.28.0",
+    "lxml>=4.9.0",
+    "GitPython>=3.1.0",
+    "nvdlib>=0.7.0",
+    "pyforgejo>=0.1.0",
+]
+
+[project.optional-dependencies]
+# Extra tools for 10k EPS environments (Reporting/SIEM)
+dev = ["black", "pytest"]
+ui = ["sweetviz", "pandas"]
+
+[project.scripts]
+# This creates the 'glsa-oval' command in your terminal
+glsa-oval = "glsa_parser.core:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["glsa_parser*"]
