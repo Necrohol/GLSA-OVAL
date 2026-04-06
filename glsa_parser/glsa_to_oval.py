@@ -1,3 +1,27 @@
+# glsa_parser/glsa_to_oval.py
+import os
+import lxml.etree as ET
+from git import Repo
+
+def sync_glsa():
+    """Logic to pull from Codeberg"""
+    # ... (Your GitPython code) ...
+    print("Sync complete.")
+
+def generate_oval():
+    """Logic to build the enriched XML"""
+    # ... (Your lxml/nvdlib code) ...
+    return "gentoo-enriched-oval.xml"
+
+def main():
+    """The entry point for the 'glsa-oval' command"""
+    sync_glsa()
+    generate_oval()
+
+if __name__ == "__main__":
+    main()
+
+
 import os
 import time
 import lxml.etree as ET
